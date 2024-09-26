@@ -4,10 +4,10 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-//@Component
+@Component
 public class Parrot {
 
-    private String name;
+    private String name = "Koi";
 
     public String getName() {
         return name;
