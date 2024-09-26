@@ -20,4 +20,12 @@ public class Person {
     public void setParrot(Parrot parrot) {
         this.parrot = parrot;
     }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", parrot=" + parrot +
+                '}';
+    }
 }

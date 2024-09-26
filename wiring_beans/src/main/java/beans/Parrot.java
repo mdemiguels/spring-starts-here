@@ -19,6 +19,8 @@ public class Parrot {
 
     @Override
     public String toString() {
-        return "Parrot : " + name;
+        return "Parrot{" +
+                "name='" + name + '\'' +
+                '}';
     }
 }
