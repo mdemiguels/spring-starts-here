@@ -1,6 +1,5 @@
 package com.mdemiguels.webscopes.utilities;
 
-import com.mdemiguels.webscopes.model.User;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -8,8 +7,26 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestScope
 public class LoginProcessor {
 
-    public boolean checkUser(User user) {
-        return user.getUsername().equals("mdemiguels") && user.getPassword().equals("password");
+    private String username;
+    private String password;
+
+    public boolean login() {
+        return username.equals("mdemiguels") && password.equals("1234");
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }

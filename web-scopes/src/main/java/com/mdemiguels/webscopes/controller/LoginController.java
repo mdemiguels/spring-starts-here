@@ -13,8 +13,8 @@ public class LoginController {
 
     private final LoginProcessor loginUtility;
 
-    public LoginController(LoginProcessor logginUtility) {
-        this.loginUtility = logginUtility;
+    public LoginController(LoginProcessor loginUtility) {
+        this.loginUtility = loginUtility;
     }
 
     @GetMapping("/")
@@ -26,14 +26,15 @@ public class LoginController {
     public String loginPost(@RequestParam String username,
                             @RequestParam String password,
                             Model model) {
-        User user = new User(username, password);
 
-        if (loginUtility.checkUser(user)) {
+        boolean loggedIn = false;
+
+        if (loggedIn) {
             model.addAttribute("message", "User verified");
-            return "login";
+        } else {
+            model.addAttribute("message", "User incorrect");
         }
 
-        model.addAttribute("message", "User incorrect");
         return "login";
     }
 }
