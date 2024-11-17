@@ -1,5 +1,6 @@
 package com.mdemiguels.webscopes.utilities;
 
+import com.mdemiguels.webscopes.services.LoggedUserManagementService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -7,11 +8,25 @@ import org.springframework.web.context.annotation.RequestScope;
 @RequestScope
 public class LoginProcessor {
 
+    private final LoggedUserManagementService loggedUserManagementService;
+
     private String username;
     private String password;
 
+    public LoginProcessor(LoggedUserManagementService loggedUserManagementService) {
+        this.loggedUserManagementService = loggedUserManagementService;
+    }
+
     public boolean login() {
-        return username.equals("mdemiguels") && password.equals("1234");
+
+        if(username.equals("mdemiguels") && password.equals("1234")) {
+            loggedUserManagementService.setUsername(this.username);
+
+            return true;
+        }else {
+            return false;
+        }
+
     }
 
     public String getUsername() {

@@ -1,6 +1,5 @@
 package com.mdemiguels.webscopes.controller;
 
-import com.mdemiguels.webscopes.model.User;
 import com.mdemiguels.webscopes.utilities.LoginProcessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,14 +26,15 @@ public class LoginController {
                             @RequestParam String password,
                             Model model) {
 
-        boolean loggedIn = false;
+        loginUtility.setUsername(username);
+        loginUtility.setPassword(password);
+        boolean loggedIn = loginUtility.login();
 
         if (loggedIn) {
-            model.addAttribute("message", "User verified");
-        } else {
-            model.addAttribute("message", "User incorrect");
+            return "redirect:/main";
         }
 
+        model.addAttribute("message", "Login incorrect");
         return "login";
     }
 }
