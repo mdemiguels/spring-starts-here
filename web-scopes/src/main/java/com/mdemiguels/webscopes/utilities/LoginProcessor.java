@@ -1,6 +1,7 @@
 package com.mdemiguels.webscopes.utilities;
 
 import com.mdemiguels.webscopes.services.LoggedUserManagementService;
+import com.mdemiguels.webscopes.services.LoginCountService;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.RequestScope;
 
@@ -9,15 +10,19 @@ import org.springframework.web.context.annotation.RequestScope;
 public class LoginProcessor {
 
     private final LoggedUserManagementService loggedUserManagementService;
+    private final LoginCountService loginCountService;
 
     private String username;
     private String password;
 
-    public LoginProcessor(LoggedUserManagementService loggedUserManagementService) {
+    public LoginProcessor(LoggedUserManagementService loggedUserManagementService, LoginCountService loginCountService) {
         this.loggedUserManagementService = loggedUserManagementService;
+        this.loginCountService = loginCountService;
     }
 
     public boolean login() {
+
+        loginCountService.incrementCount();
 
         if(username.equals("mdemiguels") && password.equals("1234")) {
             loggedUserManagementService.setUsername(this.username);
