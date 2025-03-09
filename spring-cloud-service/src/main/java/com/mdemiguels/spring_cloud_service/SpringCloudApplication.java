@@ -1,4 +1,4 @@
-package com.mdemiguels.spring_cloud;
+package com.mdemiguels.spring_cloud_service;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
